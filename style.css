@@ -227,8 +227,14 @@ footer{padding:58px 0 28px;border-top:1px solid var(--border);position:relative;
   .f-row{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr}
   .ft{grid-template-columns:1fr}
-  .nav-cta{display:none}
+  .nav-cta{display:none}    
   .float-ct span:last-child{display:none}
   .float-ct{padding:13px 15px}
   #hero{padding-top:100px}
+}
+
+/* Ocultar cursor personalizado en móviles (pantallas táctiles) */
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto !important; }
+  #cd, #cr { display: none !important; }
 }
