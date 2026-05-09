@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  // 1. CURSOR
+  // 1. CURSOR (Solo para PC)
   const cd = document.getElementById('cd');
   const cr = document.getElementById('cr');
 
-  if (cd && cr) {
+  // Verifica si el dispositivo usa un ratón real y no es táctil
+  const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (cd && cr && isDesktop) {
     let mx = window.innerWidth / 2, my = window.innerHeight / 2;
     let rx = mx, ry = my;
 
