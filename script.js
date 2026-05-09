@@ -134,26 +134,50 @@ document.addEventListener('DOMContentLoaded', () => {
     vn.addEventListener('mouseleave', () => vn.style.animationPlayState = 'running');
   }
 
-  // 8. FORMULARIO
-  const submitBtn = document.getElementById('submit-btn');
-  if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
-      const ins = document.querySelectorAll('.ct-form input, .ct-form select, .ct-form textarea');
-      let ok = true;
-      ins.forEach(i => {
-        if (!i.value.trim()) {
-          i.style.borderColor = 'rgba(220,60,60,.5)';
-          ok = false;
-        } else {
-          i.style.borderColor = '';
-        }
-      });
-      if (ok) {
+  // 8. FORMULARIO REAL (Con FormSubmit)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que la página se recargue al enviar
+  
+        const btn = document.getElementById('submit-btn');
         const formOk = document.getElementById('form-ok');
-        if (formOk) formOk.style.display = 'block';
-        ins.forEach(i => i.value = '');
-        setTimeout(() => { if (formOk) formOk.style.display = 'none'; }, 4000);
-      }
+        const formErr = document.getElementById('form-err');
+  
+        // Cambiar texto del botón mientras envía
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Enviando...';
+        btn.disabled = true;
+        formOk.style.display = 'none';
+        formErr.style.display = 'none';
+  
+        // Reemplaza ESTE correo por tu correo real
+        const endpoint = "https://formsubmit.co/ajax/arjeywow@gmail.com";
+  
+        fetch(endpoint, {
+            method: "POST",
+            body: new FormData(contactForm)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === "true" || data.success) {
+                formOk.style.display = 'block';
+                contactForm.reset();
+                setTimeout(() => { formOk.style.display = 'none'; }, 5000);
+            } else {
+                formErr.style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            formErr.style.display = 'block';
+        })
+        .finally(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+      });
+    }
     });
   }
 });
