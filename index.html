@@ -164,15 +164,42 @@
           <a href="https://wa.me/18000000000" target="_blank" class="ct-method reveal reveal-delay-3"><div class="ct-method-icon">💬</div><div class="ct-method-info"><span>WhatsApp</span><span>Envíanos un mensaje directo</span></div></a>
         </div>
       </div>
-      <div class="ct-form reveal">
-        <div class="f-row">
-          <div class="f-group"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
-          <div class="f-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
-        </div>
-        <div class="f-group"><label>Servicio de Interés</label><select><option value="">Selecciona un servicio</option><option>Grabación</option><option>Producción Musical</option><option>Mezcla & Mastering</option><option>Distribución Digital</option><option>Marketing & Redes</option><option>Management Artístico</option><option>Otro</option></select></div>
-        <div class="f-group"><label>Mensaje</label><textarea placeholder="Cuéntanos sobre tu proyecto…"></textarea></div>
-        <button class="btn-primary" id="submit-btn" style="align-self:flex-start;border:none;font-family:var(--font-body)">Enviar Mensaje ✦</button>
-        <div id="form-ok" style="display:none;color:var(--em);font-size:.8rem;font-weight:600;letter-spacing:1px;margin-top:8px">✓ Mensaje enviado. Te contactaremos pronto.</div>
+        <form class="ct-form reveal" id="contact-form">
+    <div class="f-row">
+      <div class="f-group">
+        <label>Nombre</label>
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="f-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="tu@email.com" required>
+      </div>
+    </div>
+    <div class="f-group">
+      <label>Servicio de Interés</label>
+      <select name="servicio" required>
+        <option value="">Selecciona un servicio</option>
+        <option>Grabación</option>
+        <option>Producción Musical</option>
+        <option>Mezcla & Mastering</option>
+        <option>Distribución Digital</option>
+        <option>Marketing & Redes</option>
+        <option>Management Artístico</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="f-group">
+      <label>Mensaje</label>
+      <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto…" required></textarea>
+    </div>
+    
+    <input type="hidden" name="_captcha" value="false">
+  
+    <button type="submit" class="btn-primary" id="submit-btn" style="align-self:flex-start;border:none;font-family:var(--font-body)">Enviar Mensaje ✦</button>
+    
+    <div id="form-ok" style="display:none;color:var(--em);font-size:.8rem;font-weight:600;letter-spacing:1px;margin-top:8px">✓ Mensaje enviado. Te contactaremos pronto.</div>
+    <div id="form-err" style="display:none;color:rgba(220,60,60,.9);font-size:.8rem;font-weight:600;letter-spacing:1px;margin-top:8px">❌ Hubo un error al enviar el mensaje.</div>
+    </form>
       </div>
     </div>
   </div>
