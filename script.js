@@ -135,49 +135,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 8. FORMULARIO REAL (Con FormSubmit)
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita que la página se recargue al enviar
-  
-        const btn = document.getElementById('submit-btn');
-        const formOk = document.getElementById('form-ok');
-        const formErr = document.getElementById('form-err');
-  
-        // Cambiar texto del botón mientras envía
-        const originalText = btn.innerHTML;
-        btn.innerHTML = 'Enviando...';
-        btn.disabled = true;
-        formOk.style.display = 'none';
-        formErr.style.display = 'none';
-  
-        // Reemplaza ESTE correo por tu correo real
-        const endpoint = "https://formsubmit.co/ajax/arjeywow@gmail.com";
-  
-        fetch(endpoint, {
-            method: "POST",
-            body: new FormData(contactForm)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success === "true" || data.success) {
-                formOk.style.display = 'block';
-                contactForm.reset();
-                setTimeout(() => { formOk.style.display = 'none'; }, 5000);
-            } else {
-                formErr.style.display = 'block';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            formErr.style.display = 'block';
-        })
-        .finally(() => {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        });
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita que la página se recargue al enviar
+
+      const btn = document.getElementById('submit-btn');
+      const formOk = document.getElementById('form-ok');
+      const formErr = document.getElementById('form-err');
+
+      // Cambiar texto del botón mientras envía
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Enviando...';
+      btn.disabled = true;
+      formOk.style.display = 'none';
+      formErr.style.display = 'none';
+
+      // Reemplaza ESTE correo por tu correo real
+      const endpoint = "https://formsubmit.co/ajax/arjeywow@gmail.com";
+
+      fetch(endpoint, {
+          method: "POST",
+          body: new FormData(contactForm)
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success === "true" || data.success) {
+              formOk.style.display = 'block';
+              contactForm.reset();
+              setTimeout(() => { formOk.style.display = 'none'; }, 5000);
+          } else {
+              formErr.style.display = 'block';
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          formErr.style.display = 'block';
+      })
+      .finally(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
       });
-    }
     });
   }
 });
