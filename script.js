@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   // 1. CURSOR (Solo para PC)
   const cd = document.getElementById('cd');
   const cr = document.getElementById('cr');
-
-  // Verifica si el dispositivo usa un ratón real y no es táctil
   const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   if (cd && cr && isDesktop) {
@@ -32,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. EFECTO DE FONDO (AMBIENT CANVAS)
+  // 2. AMBIENT CANVAS
   const cv = document.getElementById('ambient-canvas');
   if (cv) {
     const cx = cv.getContext('2d');
@@ -78,13 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
   }
 
-  // 3. BARRA DE NAVEGACIÓN (NAV SCROLL)
+  // 3. NAV SCROLL
   const nb = document.getElementById('navbar');
   if (nb) {
     window.addEventListener('scroll', () => nb.classList.toggle('sc', window.scrollY > 50));
   }
 
-  // 4. MENÚ MÓVIL (HAMBURGER)
+  // 4. HAMBURGER
   const ham = document.getElementById('ham');
   const mm = document.getElementById('mMenu');
   if (ham && mm) {
@@ -98,13 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   }
 
-  // 5. EFECTO REVEAL (APARECER AL HACER SCROLL)
+  // 5. REVEAL
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // 6. NÚMEROS ANIMADOS (STATS)
+  // 6. STATS
   function cu(el) {
     const t = +el.dataset.target;
     let c = 0, s = Math.ceil(t / 55);
@@ -127,31 +125,30 @@ document.addEventListener('DOMContentLoaded', () => {
     so.observe(statsSection);
   }
 
-  // 7. PAUSAR VINILO
+  // 7. VINYL PAUSE
   const vn = document.getElementById('vinyl');
   if (vn) {
     vn.addEventListener('mouseenter', () => vn.style.animationPlayState = 'paused');
     vn.addEventListener('mouseleave', () => vn.style.animationPlayState = 'running');
   }
 
-  // 8. FORMULARIO REAL (Con FormSubmit)
+  // 8. FORMULARIO REAL (FormSubmit)
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // Evita que la página se recargue al enviar
+      e.preventDefault();
 
       const btn = document.getElementById('submit-btn');
       const formOk = document.getElementById('form-ok');
       const formErr = document.getElementById('form-err');
 
-      // Cambiar texto del botón mientras envía
       const originalText = btn.innerHTML;
       btn.innerHTML = 'Enviando...';
       btn.disabled = true;
       formOk.style.display = 'none';
-      formErr.style.display = 'none';
+      if(formErr) formErr.style.display = 'none';
 
-      // Reemplaza ESTE correo por tu correo real
+      // Endpoint conectado a tu correo real
       const endpoint = "https://formsubmit.co/ajax/arjeywow@gmail.com";
 
       fetch(endpoint, {
@@ -165,12 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
               contactForm.reset();
               setTimeout(() => { formOk.style.display = 'none'; }, 5000);
           } else {
-              formErr.style.display = 'block';
+              if(formErr) formErr.style.display = 'block';
           }
       })
       .catch(error => {
           console.error('Error:', error);
-          formErr.style.display = 'block';
+          if(formErr) formErr.style.display = 'block';
       })
       .finally(() => {
           btn.innerHTML = originalText;
