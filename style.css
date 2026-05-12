@@ -16,7 +16,7 @@ html{scroll-behavior:smooth;font-size:16px}
   --radius-sm:10px;
   --ease:0.4s cubic-bezier(0.25,0.8,0.25,1);
 }
-body{background:var(--bg-deep);color:var(--white);font-family:var(--font-body);overflow-x:hidden;cursor:none}
+body{display:block;background:var(--bg-deep);color:var(--white);font-family:var(--font-body);overflow-x:hidden;cursor:none}
 
 /* CURSOR */
 #cd{position:fixed;top:0;left:0;width:7px;height:7px;background:var(--em);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
@@ -227,13 +227,13 @@ footer{padding:58px 0 28px;border-top:1px solid var(--border);position:relative;
   .f-row{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr}
   .ft{grid-template-columns:1fr}
-  .nav-cta{display:none}    
+  .nav-cta{display:none}
   .float-ct span:last-child{display:none}
   .float-ct{padding:13px 15px}
   #hero{padding-top:100px}
 }
 
-/* Ocultar cursor personalizado en móviles (pantallas táctiles) */
+/* Ocultar cursor personalizado en móviles */
 @media (hover: none) and (pointer: coarse) {
   body { cursor: auto !important; }
   #cd, #cr { display: none !important; }
