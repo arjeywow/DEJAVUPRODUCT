@@ -264,7 +264,8 @@ section { padding: 120px 5%; position: relative; z-index: 1; border-bottom: 1px 
 .track-f { font-size: 0.75rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1px;}
 .track-d { font-family: monospace; font-size: 0.85rem; color: var(--grey); margin-right: 20px; }
 .play-b { font-size: 0.8rem; color: var(--white); opacity: 0.3; transition: var(--ease); }
-.track:hover .play-b { opacity: 1; color: var(--em); }
+.track:hover .play-b, .track.playing .play-b { opacity: 1; color: var(--em); }
+.track.playing { padding-left: 15px; background: linear-gradient(90deg, var(--em-dim), transparent); border-bottom-color: var(--em); }
 
 /* ==========================================================================
    PROCESO (Ajustado a bloques limpios)
@@ -428,12 +429,12 @@ footer { background: #000; padding: 100px 5% 40px; border-top: 1px solid var(--b
     </div>
     
     <div class="artists-grid">
-      <!-- Artista 1: RamdonnX -->
+      <!-- Artista 1: AnonimusIndependence -->
       <div class="art-card reveal">
-        <div class="art-cover cover-1"><div class="cover-badge">[HQ 3000x3000]</div></div>
+        <div class="art-cover cover-3"><div class="cover-badge">[HQ 3000x3000]</div></div>
         <div class="art-info">
-          <p class="art-name">RamdonnX</p>
-          <p class="art-genre">Electrónica / IDM</p>
+          <p class="art-name">AnonimusIndependence</p>
+          <p class="art-genre">Experimental / Hip-Hop</p>
         </div>
       </div>
       <!-- Artista 2: La Sombra -->
@@ -444,12 +445,12 @@ footer { background: #000; padding: 100px 5% 40px; border-top: 1px solid var(--b
           <p class="art-genre">Dark Trap / Alternativo</p>
         </div>
       </div>
-      <!-- Artista 3: AnonimusIndependence -->
+      <!-- Artista 3: RamdonnX -->
       <div class="art-card reveal reveal-delay-2">
-        <div class="art-cover cover-3"><div class="cover-badge">[HQ 3000x3000]</div></div>
+        <div class="art-cover cover-1"><div class="cover-badge">[HQ 3000x3000]</div></div>
         <div class="art-info">
-          <p class="art-name">AnonimusIndependence</p>
-          <p class="art-genre">Experimental / Hip-Hop</p>
+          <p class="art-name">RamdonnX</p>
+          <p class="art-genre">Electrónica / IDM</p>
         </div>
       </div>
       <!-- Artista 4: VariusArt -->
@@ -489,40 +490,40 @@ footer { background: #000; padding: 100px 5% 40px; border-top: 1px solid var(--b
         
         <!-- Tracklist limitado a 2:40 según especificación -->
         <div class="tracklist reveal">
-          <div class="track">
+          <div class="track" data-src="audios/AnonimusIndependence - Sangre de Pasión.mp3">
             <span class="track-n">01.</span>
             <div class="track-info">
-              <div class="track-t">Noche Eterna</div>
-              <div class="track-f">RamdonnX</div>
-            </div>
-            <span class="track-d">1:45</span>
-            <div class="play-b">▶</div>
-          </div>
-          <div class="track">
-            <span class="track-n">02.</span>
-            <div class="track-info">
-              <div class="track-t">Eclipse</div>
-              <div class="track-f">La Sombra</div>
-            </div>
-            <span class="track-d">2:10</span>
-            <div class="play-b">▶</div>
-          </div>
-          <div class="track">
-            <span class="track-n">03.</span>
-            <div class="track-info">
-              <div class="track-t">Sin Vuelta Atrás</div>
+              <div class="track-t">Sangre de Pasión</div>
               <div class="track-f">AnonimusIndependence</div>
             </div>
-            <span class="track-d">2:38</span>
+            <span class="track-d">2:44</span>
             <div class="play-b">▶</div>
           </div>
-          <div class="track">
+          <div class="track" data-src="audios/AnonimusIndependence - Una noche.mp3">
+            <span class="track-n">02.</span>
+            <div class="track-info">
+              <div class="track-t">Una noche</div>
+              <div class="track-f">AnonimusIndependence</div>
+            </div>
+            <span class="track-d">2:46</span>
+            <div class="play-b">▶</div>
+          </div>
+          <div class="track" data-src="audios/AnonimusIndependence - Temporada.mp3">
+            <span class="track-n">03.</span>
+            <div class="track-info">
+              <div class="track-t">Temporada</div>
+              <div class="track-f">AnonimusIndependence</div>
+            </div>
+            <span class="track-d">3:45</span>
+            <div class="play-b">▶</div>
+          </div>
+          <div class="track" data-src="AnonimusIndependence - Musa+Quimica.mp3">
             <span class="track-n">04.</span>
             <div class="track-info">
-              <div class="track-t">Intro (Visiones)</div>
-              <div class="track-f">VariusArt</div>
+              <div class="track-t">Musa+Quimica</div>
+              <div class="track-f">AnonimusIndependence</div>
             </div>
-            <span class="track-d">1:20</span>
+            <span class="track-d">2:18</span>
             <div class="play-b">▶</div>
           </div>
         </div>
@@ -623,7 +624,7 @@ footer { background: #000; padding: 100px 5% 40px; border-top: 1px solid var(--b
     <div class="ft">
       <div class="fb">
         <div class="nav-logo" style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">
-          <img src="djvu logo.svg" alt="DEJAVU PRODUCT Logo" style="width: 44px; height: auto;">
+          <img src="images/djvu logo.svg" alt="DEJAVU PRODUCT Logo" style="width: 44px; height: auto;">
           DEJAVU PRODUCT
         </div>
         <p>Impulsando artistas emergentes desde 2018. Cultura, sonido e impacto en la era digital.</p>
@@ -795,7 +796,63 @@ document.addEventListener('DOMContentLoaded', () => {
     so.observe(heroSection);
   }
 
-  // 7. FORM SUBMIT
+  // 7. REPRODUCTOR DE AUDIO Y EFECTO VINILO
+  const tracks = document.querySelectorAll('.track');
+  const vinyl = document.getElementById('vinyl');
+  let currentAudio = null;
+  let currentTrackEl = null;
+
+  // Pausar el vinilo por defecto al cargar la página
+  if(vinyl) vinyl.style.animationPlayState = 'paused';
+
+  tracks.forEach(track => {
+    track.addEventListener('click', () => {
+      const src = track.getAttribute('data-src');
+      if (!src) return;
+
+      const playBtn = track.querySelector('.play-b');
+
+      // Si hacemos clic en la canción que ya está seleccionada (Play / Pause)
+      if (currentTrackEl === track) {
+        if (currentAudio.paused) {
+          currentAudio.play();
+          playBtn.textContent = '⏸';
+          if(vinyl) vinyl.style.animationPlayState = 'running';
+        } else {
+          currentAudio.pause();
+          playBtn.textContent = '▶';
+          if(vinyl) vinyl.style.animationPlayState = 'paused';
+        }
+        return;
+      }
+
+      // Si hay otra canción sonando, la detenemos y reseteamos su botón
+      if (currentAudio) {
+        currentAudio.pause();
+        if (currentTrackEl) {
+          currentTrackEl.querySelector('.play-b').textContent = '▶';
+          currentTrackEl.classList.remove('playing');
+        }
+      }
+
+      // Iniciar la nueva canción
+      currentAudio = new Audio(src);
+      currentAudio.play();
+      currentTrackEl = track;
+      playBtn.textContent = '⏸';
+      track.classList.add('playing');
+      if(vinyl) vinyl.style.animationPlayState = 'running'; // Girar vinilo
+
+      // Cuando la canción termina sola
+      currentAudio.addEventListener('ended', () => {
+        playBtn.textContent = '▶';
+        track.classList.remove('playing');
+        if(vinyl) vinyl.style.animationPlayState = 'paused';
+      });
+    });
+  });
+
+  // 8. FORM SUBMIT
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
